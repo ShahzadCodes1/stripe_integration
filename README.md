@@ -1,106 +1,115 @@
-# Stripe Payment Gateway Integration — PHP + phpMyAdmin
+# 💳 Stripe Integration
 
-A full-featured Stripe payment dashboard built in PHP with a Stripe-like UI.
+A modern Stripe payment gateway integration built with PHP, designed to handle secure online transactions with a smooth and reliable checkout experience.
 
----
-
-## 📁 Project Structure
-
-```
-stripe_integration/
-├── index.php               ← Dashboard (stats + chart + recent payments)
-├── charge.php              ← New payment form (Stripe Elements)
-├── payments.php            ← All payments with search/filter/pagination
-├── payment_detail.php      ← Single payment detail + issue refund
-├── customers.php           ← Customer list
-├── refunds.php             ← All refunds
-├── webhook.php             ← Webhook log viewer
-├── webhook_handler.php     ← Stripe webhook receiver (point Stripe here)
-├── settings.php            ← API key configuration
-├── database.sql            ← DB schema — import into phpMyAdmin
-└── includes/
-    ├── config.php          ← DB credentials + helpers
-    ├── stripe.php          ← Stripe API wrapper (no SDK needed, pure cURL)
-    ├── header.php          ← Sidebar + topbar layout
-    └── footer.php          ← Closing tags + JS
-```
+This project demonstrates real-world payment processing workflows using Stripe APIs, including checkout session handling, transaction flow management, and secure payment communication between frontend and backend systems.
 
 ---
 
-## ⚡ Quick Setup
+# 🚀 Features
 
-### 1. Import the database
-- Open **phpMyAdmin** (http://localhost/phpmyadmin)
-- Click **Import** tab
-- Select `database.sql` and click Go
-- Database `stripe_integration` will be created with all tables
+- Secure Stripe payment processing
+- Fast and responsive checkout workflow
+- API-driven payment session handling
+- Success and cancellation flow management
+- Clean backend architecture using PHP
+- Lightweight and scalable implementation
+- Optimized user payment experience
+- Production-style payment integration structure
 
-### 2. Configure your database credentials
-Edit `includes/config.php`:
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'stripe_integration');
-define('DB_USER', 'root');     // your phpMyAdmin username
-define('DB_PASS', '');         // your phpMyAdmin password
-define('BASE_URL', 'http://localhost/stripe_integration');
+---
+
+# 🛠️ Tech Stack
+
+- PHP
+- Stripe API
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+# ⚙️ Installation
+
+```bash
+git clone https://github.com/ShahzadCodes1/stripe-integration.git
+
+cd stripe-integration
 ```
 
-### 3. Place files in your web server
-- **XAMPP**: Copy the folder to `C:/xampp/htdocs/stripe_integration/`
-- **WAMP**: Copy to `C:/wamp64/www/stripe_integration/`
-- **Linux Apache**: Copy to `/var/www/html/stripe_integration/`
-
-### 4. Configure Stripe API Keys
-- Open http://localhost/stripe_integration/settings.php
-- Enter your **Publishable Key** (pk_test_…) and **Secret Key** (sk_test_…)
-- Get keys from: https://dashboard.stripe.com/test/apikeys
-
-### 5. Set up Webhooks (optional but recommended)
-- Go to https://dashboard.stripe.com/test/webhooks
-- Add endpoint: `http://YOUR_DOMAIN/stripe_integration/webhook_handler.php`
-- Select events: `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.refunded`
-- Copy the signing secret → paste in Settings page
+Run the project on a local PHP server environment such as XAMPP or Laragon.
 
 ---
 
-## 🧪 Test Cards (Test Mode)
+# 📂 Project Structure
 
-| Card Number          | Result              |
-|---------------------|---------------------|
-| 4242 4242 4242 4242  | ✅ Always succeeds  |
-| 4000 0025 6000 0051  | 🔐 3D Secure        |
-| 4000 0000 0000 9995  | ❌ Always declined  |
-| 5555 5555 5555 4444  | ✅ Mastercard       |
-
-Use any future expiry date and any 3-digit CVC.
-
----
-
-## 🗄️ Database Tables
-
-| Table           | Purpose                        |
-|----------------|--------------------------------|
-| `customers`     | Customer profiles              |
-| `payments`      | Payment records + card info    |
-| `refunds`       | Refund records                 |
-| `webhook_logs`  | Raw Stripe webhook events      |
-| `settings`      | API keys + configuration       |
+```bash
+stripe-integration/
+│
+├── assets/
+├── config/
+├── checkout/
+├── success.php
+├── cancel.php
+├── index.php
+└── README.md
+```
 
 ---
 
-## 🔒 Security Notes
-- Secret key is stored in the database (settings table), never in front-end code
-- Card data never touches your server — handled entirely by Stripe.js
-- Webhook signature verification prevents spoofed events
-- All user input is sanitized via PDO prepared statements
-- XSS protection via `htmlspecialchars()` on all output
+# 🔐 Payment Workflow
+
+1. User selects payment option
+2. Stripe checkout session is created
+3. Secure payment request is processed
+4. User is redirected based on transaction status
+5. Payment response is handled dynamically
 
 ---
 
-## 📦 Requirements
-- PHP 7.4+
-- MySQL 5.7+ / MariaDB 10.3+
-- cURL extension (usually enabled by default)
-- Apache / Nginx web server
-- phpMyAdmin (for DB management)
-- No Composer or Stripe SDK needed — uses raw cURL
+# 🎯 Project Objective
+
+The purpose of this project is to implement a secure and professional payment gateway system using Stripe and PHP while following modern backend integration practices.
+
+It highlights:
+- Payment gateway implementation
+- API integration
+- Secure transaction handling
+- Backend development workflows
+- Real-world e-commerce functionality
+
+---
+
+# 📈 Key Highlights
+
+- Real payment gateway integration
+- Backend-focused implementation
+- Clean and organized code structure
+- Scalable architecture approach
+- Recruiter-friendly project presentation
+
+---
+
+# 🔥 Future Scope
+
+- Subscription billing
+- Invoice generation
+- Webhook integration
+- Multi-currency support
+- User authentication system
+- Payment history dashboard
+
+---
+
+# 👨‍💻 Author
+
+## Shahzad Ch
+
+Software Engineer focused on backend development, automation, AI-driven systems, and scalable web applications.
+
+
+---
+
+# ⭐ Repository Support
+
+If you found this project useful, consider starring the repository.
